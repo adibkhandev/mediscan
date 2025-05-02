@@ -2,7 +2,7 @@ import Ham from './../assets/ham.svg'
 import TextLogo from './../assets/text-logo.svg'
 import Write from './../assets/write.svg'
 import Logo from './../assets/logo.svg'
-import Image from './../assets/logo.svg'
+import Image from './../assets/image.svg'
 import Speaker from './../assets/speaker.svg'
 
 export const Home = () => {
@@ -19,7 +19,20 @@ export const Home = () => {
               Upload your infection picture and i will help curing
             </div>
           </div>
-          <div className="input-cont"></div>
+          <div className="input-cont">
+            <div className="img"></div>
+            <div className="tools">
+                <div className="left">
+                  <div className="image">
+                    <img src={Image} alt="" />
+                  </div>
+                  <input type="text" placeholder='Describe your disease' />
+                </div>
+                <div className="right">
+                  <img src={Speaker} alt="" />
+                </div>
+            </div>
+          </div>
        </div>
     )
 }
