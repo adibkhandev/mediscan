@@ -4,10 +4,37 @@ import Write from './../assets/write.svg'
 import Logo from './../assets/logo.svg'
 import Image from './../assets/image.svg'
 import Speaker from './../assets/speaker.svg'
-
+import { useState,useEffect } from 'react'
+import {motion} from 'framer-motion' 
 export const Home = () => {
+  
+  //resize
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+  const [initialHeight, setInitialHeight] = useState(window.innerHeight);
+  useEffect(() => {
+    const handleResize = () => {
+      const currentHeight = window.innerHeight;
+      const heightDifference = initialHeight - currentHeight;
+
+      if (heightDifference > 150) {
+        // Likely the keyboard is open
+        setKeyboardHeight(heightDifference);
+      } else {
+        // Keyboard is likely closed
+        setKeyboardHeight(0);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [initialHeight]);
+
+  //resize
+  //
     return(
-       <div className="home-container">
+       <motion.div
+       animate={keyboardHeight==0?{height:'100svh'}:{height:`${window.innerHeight}`}}
+       className="home-container">
           <div className="nav-cont">
             <img src={Ham} alt="" />
             <img src={TextLogo} alt="" />
@@ -32,6 +59,6 @@ export const Home = () => {
                 </div>
             </div>
           </div>
-       </div>
+       </motion.div>
     )
 }
