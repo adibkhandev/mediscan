@@ -20,7 +20,6 @@ export const Home = () => {
             </div>
           </div>
           <div className="input-cont">
-            <div className="img"></div>
             <div className="tools">
                 <div className="left">
                   <div className="image">
